@@ -1,0 +1,21 @@
+<div class="container">
+	<div class="alert alert-success reduce" ng-click="hideTokens = !hideTokens" style="word-wrap: break-word;cursor: pointer;">
+		<div>
+			<i class="fa fa-fw fa-check"></i> <strong>Connected</strong><br>
+		</div>
+		<div  ng-show="hideTokens">
+			<i class="fa fa-fw fa-key"></i> <strong>Token:</strong> {{token}}<br><br>
+			<i class="fa fa-fw fa-key"></i> <strong>Refresh Token:</strong> {{refresh_token}}
+		</div>
+	</div>
+	<div class="row">
+		<div ng-repeat="module in modules" ng-class="module.size" id="$index">
+			<div class="module-wrapper">
+				<div class="module-title" ng-click="module.hide = !module.hide">{{module.title}}</div>
+				<div class="module-content" ng-show="!module.hide">
+					<ng-include src="module.templateUrl" ng-controller="module.ctrl"></ng-include>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>

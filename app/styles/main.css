@@ -1,0 +1,231 @@
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+body {
+  padding: 0;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 10px;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+.login-box {
+  padding:20px;
+  border: 1px solid #CCC;
+  border-radius: 10px;
+  background-color: #f1f1f1;
+  overflow: auto;
+}
+
+.login-box input {
+  width: 100%;
+  margin: 10px 0;
+  height: 50px;
+}
+.login-box button {
+  float: right;
+  clear: both;
+  padding: 7px 30px;
+}
+
+.module-wrapper {
+  box-shadow: 0 0 1px rgba(34, 25, 25, 0.4);
+  border-radius: 2px 2px 2px 2px;
+}
+
+.module-wrapper .module-title {
+  padding: 5px 20px;
+  text-align: center;
+  background-color: #efefef;
+  color:#333;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.module-wrapper .module-title:after{
+  font-family: FontAwesome;
+  content: "\f068";
+  float: right;
+}
+.module-wrapper .module-content {
+  padding: 10px 20px;
+}
+
+.search-form {
+  padding: 10px;
+}
+.search-form input {
+  height: 40px;
+  margin:10px 0;
+}
+.search-form button {
+  height: 40px;
+  margin: 10px 0;
+  padding: 7px 30px;
+  border-radius: 0;
+  width: 100%;
+}
+
+.json-wrapper {
+  padding: 5px;
+  max-height: 300px;
+  overflow-y: auto;
+  word-wrap: break-word;
+  margin: 10px; 
+  clear:both;
+}
+.hiding-header {
+  cursor: pointer;
+  width: 100%;
+  padding: 0px 10px;
+  overflow: auto;
+  clear: both;
+}
+.hiding-header .control {
+  float: right;
+}
+.hiding-header .details {
+  float: left;
+}
+
+.result-list-header {
+  padding:10px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #f6f6f6;
+  border-bottom: 1px solid #ddd;
+  border-radius: 5px 5px 0 0;
+  color:#555;
+  cursor: pointer;
+}
+.result-list-header:after{
+  font-family: FontAwesome;
+  content: "\f068";
+  float: right;
+}
+.result-list-header.mu-hidden {
+  color:#999;
+}
+.result-list-header.mu-hidden:after {
+  content: "\f067";
+}
+
+.result-list {
+  background-color: #fafafa;
+  border-radius: 0 0 5px 5px;
+  list-style: none
+}
+
+.result-list > li {
+  overflow: auto;
+  margin: 10px 0; 
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.result-list > li > figure {
+  float: left;
+  width: 20%;
+  border:1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.result-list > li > figure > img {
+  width: 100%;
+}
+.result-list > li > .music-infos {
+  width: 80%;
+  float: right;
+  display: inline-block;  
+  padding: 10px;
+}
+.result-list > li > .music-infos > h3{
+  text-transform:capitalize;
+  margin-top: 0;
+}
+.result-list > li > .music-infos > .btn {
+  margin-top: 5px;
+}
+.result-list > li > .music-infos > .btn:after {
+  font-family: FontAwesome;
+  content: "\f054";
+  padding-left: 10px;
+}
+.reduce:after {
+  font-family: FontAwesome;
+  content: "\f068";
+  float: right;
+}

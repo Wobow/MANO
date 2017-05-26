@@ -1,0 +1,58 @@
+<div class="row">
+	<form name="search_form" class="search-form">
+		<input type="text" placeholder="Titre" ng-model="search.title" class="form-control" required>
+		<input type="text" placeholder="Artiste" ng-model="search.artist" class="form-control">
+		<button class="btn btn-success" ng-disabled="search_form.$invalid || loading" ng-click="searchMusic()"><i class="fa fa-search"></i> Recherche</button>
+	</form>
+	<hr>
+	<div ng-click="showSearchContent = !showSearchContent" class="hiding-header">
+		<span class="control"><i class="fa fa-fw" ng-class="{'fa-minus': showSearchContent, 'fa-plus': !showSearchContent}"></i>{{!showSearchContent ? 'Show details' : 'Hide details'}}</span>		
+		<span class="details" ng-show="searchContent">
+			<strong>{{searchContent.config.method}}</strong> {{searchContent.config.url}} - <strong>{{searchContent.status}} {{searchContent.statusText}}</strong>
+		</span>
+	</div>
+	<pre class="json-wrapper" ng-show="showSearchContent">{{searchFormatted}}</pre>
+	<hr>
+	<div class="result-ctn" ng-show="searchContent && !searchError && !muve.music">
+		<div class="result-list-wrapper" ng-repeat="provider in searchContent.data.results">
+			<div class="result-list-header"  ng-class="{'mu-hidden': provider.hidden}" ng-click="provider.hidden = !provider.hidden">{{provider.provider}} results</div>
+			<ul class="result-list" ng-show="!provider.hidden">
+				<li ng-repeat="elem in provider.items">
+					<figure><img ng-src="{{elem.thumbnail}}"></figure>
+					<div class="music-infos">
+						<h3>{{elem.title}}</h3>
+						<small>{{elem.artist}}</small><br>
+						<a href="{{elem.url}}" target="_blank"><div class="btn btn-default">Voir</div></a>
+						<div class="btn btn-primary" ng-click="select(elem)">Select</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<form name="muve_form" class="search-form" ng-show="muve.music">
+		<ul class="result-list">
+			<li>
+				<figure><img ng-src="{{selected.thumbnail}}"></figure>
+				<div class="music-infos">
+					<h3>{{selected.title}}</h3>
+					<small>{{selected.artist}}</small><br>
+					<a href="{{selected.url}}" target="_blank"><div class="btn btn-default">Voir</div></a>
+				</div>
+			</li>
+		</ul>
+		<input type="text" placeholder="Content" ng-model="muve.content" class="form-control" required>
+		<input type="number" lang="en-150" placeholder="Latitude" ng-model="muve.lat" class="form-control" required>
+		<input type="number" lang="en-150" placeholder="Longitude" ng-model="muve.lng" class="form-control" required>
+		<button class="btn btn-success" ng-disabled="muve_form.$invalid || loading" ng-click="submit()"><i class="fa fa-paper-plane-o"></i> Envoyer</button>
+	</form>
+	<hr>
+	<div ng-click="showCreateContent = !showCreateContent" class="hiding-header" ng-show="muve.music">
+		<span class="control"><i class="fa fa-fw" ng-class="{'fa-minus': showCreateContent, 'fa-plus': !showCreateContent}"></i>{{!showCreateContent ? 'Show details' : 'Hide details'}}</span>		
+		<span class="details" ng-show="createContent">
+			<strong>{{createContent.config.method}}</strong> {{createContent.config.url}} - <strong>{{createContent.status}} {{createContent.statusText}}</strong>
+		</span>
+	</div>
+	<pre class="json-wrapper" ng-show="showCreateContent && muve.music">{{createFormatted}}</pre>
+	<hr>
+	<button class="btn btn-primary" ng-disabled="loading" ng-click="retry()"><i class="fa fa-undo"></i> Restart</button>
+</div>

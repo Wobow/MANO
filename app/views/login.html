@@ -1,0 +1,15 @@
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="login-box">
+					<h2>Login</h2>
+					<div class="alert alert-danger" ng-show="error">Email or password invalid</div>
+					<form name="login_form">
+						<input type="text" name="email" class="form-control" ng-model="credentials.email" placeholder="Email address" required>
+						<input type="password" name="password" class="form-control" ng-model="credentials.password" placeholder="Password" required>
+						<button class="btn btn-primary" ng-disabled="loading || login_form.$invalid" ng-click="login()"><span ng-show="!loading">Submit</span><span ng-show="loading"><i class="fa fa-spin fa-spinner"></i></span></button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
