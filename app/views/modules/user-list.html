@@ -1,0 +1,23 @@
+<form name="user-search">
+	<div class="input-group">
+    <input type="text" class="form-control" placeholder="Search">
+    <div class="input-group-btn">
+      <button class="btn btn-primary" type="submit">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+<ul class="user-list">
+	<li ng-repeat="user in users">
+		<h3>{{user.firstName}} {{user.lastName}} <i class="fa fa-fw" ng-class="{'fa-female text-danger':user.gender == 'female', 'text-info fa-male': user.gender == 'male'}"></i>
+		<button ng-show="user.followed < 0" class="btn btn-success pull-right" ng-click="follow(user.id)"><i class="fa fa-fw fa-plus-circle"></i> Follow</button>
+		<button ng-show="user.followed >= 0" class="btn btn-danger pull-right" ng-click="unfollow(user.followed)"><i class="fa fa-fw fa-minus-circle"></i> Unfollow</button>
+		</h3>
+		<dl>
+			<dt>Inscrit depuis: </dt><dd>{{user.createdAt | amDateFormat: 'DD/MM/YYYY hh:mm'}}</dd>
+			<dt>Birthday:</dt><dd>{{user.birthday | amDateFormat: 'DD/MM/YYYY hh:mm'}}</dd>
+			<dt>Id: </dt><dd>{{user.id}}</dd>
+		</dl>
+	</li>
+</ul>

@@ -8,9 +8,13 @@ angular.module('muveApp')
 				uri: 'http://localhost:1337',
 				routes: {
 					login: '/login',
+					register: '/register',
 					me: '/me',
 					search: '/musics/search',
-					muve: '/muves'
+					muve: '/muves',
+					users: '/users',
+					follows: '/follows',
+					feed: '/activities',
 				},
 			},
 		};
@@ -36,7 +40,7 @@ angular.module('muveApp')
 		api.$getToken = function(token) {
 			return api.conf.token;
 		};
-		api.$getRefreshToken = function(token) {
+		api.$getRefreshToken = function() {
 			return api.conf.refreshToken;
 		};
 		api.$logout = function() {
@@ -59,6 +63,9 @@ angular.module('muveApp')
 
 		// Routes
 
+		api.register = function(credentials) {
+			return api.sendRequest('POST', api.conf.routes.register, credentials);
+		};
 		api.login = function(credentials) {
 			return api.sendRequest('POST', api.conf.routes.login, credentials);
 		};
@@ -70,6 +77,21 @@ angular.module('muveApp')
 		};
 		api.createMuve = function(muve) {
 			return api.sendRequest('POST', api.conf.routes.muve, muve);
+		};
+		api.getMuvesAround = function(lat, lng) {
+			return api.sendRequest('GET', api.conf.routes.muve, null, {lat: lat, lng: lng});
+		};
+		api.searchUsers = function(query) {
+			return api.sendRequest('GET', api.conf.routes.users, null, {q: query});
+		};
+		api.follow = function(id) {
+			return api.sendRequest('POST', api.conf.routes.follows, {friend: id});
+		};
+		api.unfollow = function(id) {
+			return api.sendRequest('DELETE', api.conf.routes.follows + '/' + id);
+		};
+		api.getMyFeed = function(page) {
+			return api.sendRequest('GET', api.conf.routes.feed, null, {page: page});
 		};
 		return api;
 	});

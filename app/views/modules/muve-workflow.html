@@ -1,6 +1,6 @@
 <div class="row">
 	<form name="search_form" class="search-form">
-		<input type="text" placeholder="Titre" ng-model="search.title" class="form-control" required>
+		<input type="text" placeholder="Titre" ng-model="search.title" class="form-control">
 		<input type="text" placeholder="Artiste" ng-model="search.artist" class="form-control">
 		<button class="btn btn-success" ng-disabled="search_form.$invalid || loading" ng-click="searchMusic()"><i class="fa fa-search"></i> Recherche</button>
 	</form>

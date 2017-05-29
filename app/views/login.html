@@ -12,4 +12,24 @@
 				</div>
 			</div>
 		</div>
+		<div class="row" style="margin-top: 20px;">
+			<div class="col-md-12">
+				<div class="login-box">
+					<h2>Register</h2>
+					<div class="alert alert-danger" ng-show="errorRegister">Can't register</div>
+					<form name="register_form">
+						<input type="text" name="email" class="form-control" ng-model="credentialsRegister.email" placeholder="Email address" required>
+						<input type="password" name="password" class="form-control" ng-model="credentialsRegister.password" placeholder="Password" required>
+						<input type="text" name="password" class="form-control" ng-model="credentialsRegister.firstName" placeholder="First Name" required>
+						<input type="text" name="password" class="form-control" ng-model="credentialsRegister.lastName" placeholder="Last Name" required>
+						<select class="form-control" ng-model="credentialsRegister.gender">
+							<option ng-value="male">Male</option>
+							<option ng-value="female">Female</option>
+						</select>
+						<input type="date" name="password" class="form-control" ng-model="credentialsRegister.birthday" placeholder="Birthday" required>
+						<button class="btn btn-primary" ng-disabled="loading || register_form.$invalid" ng-click="register()"><span ng-show="!loading">Register</span><span ng-show="loading"><i class="fa fa-spin fa-spinner"></i></span></button>
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>

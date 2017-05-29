@@ -13,7 +13,10 @@ angular.module('muveApp')
 			auth.onAuthCallback(auth.user);
 		} else if ($cookies.get('muve_mano_token')) {
             auth.$authWithToken($cookies.get('muve_mano_token'))
-            .then(function(success) {      	
+            .then(function(success) {  
+      			if ($cookies.get('muve_mano_refreshtoken')) {
+					muveApi.$setRefreshToken($cookies.get('muve_mano_refreshtoken'));
+      			}   	
 				defer.resolve(auth.user);
 				auth.onAuthCallback(auth.user);
             }, function(error) {
@@ -37,6 +40,7 @@ angular.module('muveApp')
 	};
 	auth.$unauth = function() {
       	$cookies.remove('muve_mano_token');
+      	$cookies.remove('muve_mano_refreshtoken');
       	muveApi.$logout();
 		delete auth.user;
 	};
@@ -57,7 +61,7 @@ angular.module('muveApp')
 			muveApi.login({grant_type: 'refresh_token', refresh_token: refreshToken})
 			.then(function(response) {
 				var res = response.data;
-				auth.$saveToken(res.access_token);
+				auth.$saveToken(res.access_token, refreshToken);
 				auth.$authWithToken(res.access_token)
 				.then(function(data) {
 					defer.resolve(data);

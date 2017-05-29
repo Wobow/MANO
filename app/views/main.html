@@ -3,13 +3,18 @@
 		<div>
 			<i class="fa fa-fw fa-check"></i> <strong>Connected</strong><br>
 		</div>
+		<div>
+			<timer countdown="timeLeft" interval="1000" language="fr">{{minutes}} minutes, {{seconds}} seconds left. </timer>
+		</div>
 		<div  ng-show="hideTokens">
 			<i class="fa fa-fw fa-key"></i> <strong>Token:</strong> {{token}}<br><br>
-			<i class="fa fa-fw fa-key"></i> <strong>Refresh Token:</strong> {{refresh_token}}
-		</div>
+			<i class="fa fa-fw fa-key"></i> <strong>Refresh Token:</strong> {{refreshToken}}
+		</div><hr ng-show="hideTokens">
+		<button ng-show="hideTokens" class="btn btn-danger" ng-click="logout()"><i class="fa fa-power-off"></i> Log out</button>
+		<button ng-show="hideTokens" class="btn btn-info" ng-click="reconnect()"><i class="fa fa-refresh"></i> Reconnect</button>
 	</div>
 	<div class="row">
-		<div ng-repeat="module in modules" ng-class="module.size" id="$index">
+		<div ng-repeat="module in modules" ng-class="module.size" id="$index" style="margin-bottom: 20px;">
 			<div class="module-wrapper">
 				<div class="module-title" ng-click="module.hide = !module.hide">{{module.title}}</div>
 				<div class="module-content" ng-show="!module.hide">

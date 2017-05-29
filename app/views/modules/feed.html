@@ -1,0 +1,12 @@
+<ul class="feed">
+	<li class="feed-elem" ng-class="activity.type" ng-repeat="activity in feed">
+		<span class="feed-name">{{activity.user.firstName}} {{activity.user.lastName}} </span>
+		<span class="feed-date" am-time-age="activity.createdAt"></span>
+		<div class="" ng-show="activity.type == 'friend'">Now follows with {{activity.friend.firstName}} {{activity.friend.lastName}} </div>
+		<div class="" ng-show="activity.type == 'mude'">Has a new mude: {{activity.music.title}} from {{activity.music.artist}}<br> at {{activity.location.lat}}, {{activity.location.lng}}<br>{{activity.muve.content}}</div>
+		<div class="" ng-show="activity.type == 'muve'">Muved {{activity.music.title}} from {{activity.music.artist}}<br> at {{activity.location.lat}}, {{activity.location.lng}}<br>{{activity.muve.content}}</div>
+		<div class="" ng-show="activity.type == 'remuve'">ReMuved {{activity.music.title}} from {{activity.music.artist}}<br> at {{activity.location.lat}}, {{activity.location.lng}}<br>{{activity.muve.content}}</div>
+		<div class="" ng-show="activity.type == 'favoriteMusic'">Has a new favorite music : {{activity.music.title}} from {{activity.music.artist}}</div>
+	</li>
+</ul>
+<button class="btn btn-info" ng-click="refresh()"><i class="fa fa-refresh"></i> Refresh</button>

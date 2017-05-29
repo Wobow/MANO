@@ -1,0 +1,19 @@
+<ui-gmap-google-map id="muve_map" center='map.center' zoom='map.zoom' ng-if="map">
+	<ui-gmap-marker
+	ng-repeat="marker in markers"
+    idKey='$index'
+    coords='{latitude: marker.lat, longitude: marker.lng}'
+    click=''
+    options='markersOptions'
+    >
+	</ui-gmap-marker>
+	<ui-gmap-map-control
+    template='map-control-refresh.html'
+    position="TOP_CENTER"
+    index='1'>
+</ui-gmap-map-control>
+</ui-gmap-google-map>
+
+<script type="text/ng-template" id="map-control-refresh.html">
+    <div ng-controller="MapCtrl" class="btn btn-info" ng-click="reloadMuves()">Refresh</div>
+</script>
